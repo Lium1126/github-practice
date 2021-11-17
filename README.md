@@ -160,7 +160,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     このインデックスが存在することにより、余分なファイルをコミットせずに済んだり、ファイルの一部だけの変更を記録してコミットすることができます。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/index.png" alt="インデックス" title="インデックス" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/index.png" alt="インデックス" title="インデックス" style="width: 60%;">
 
 7. **コミット(Commit)**
 
@@ -174,7 +174,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     コミットを実行する際に編集が記録されるファイルは、インデックスのファイルのみです。したがって、ステージングとはコミットするファイルを指定する操作であると言い換えることができます。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/commit.png" alt="コミット" title="コミット" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/commit.png" alt="コミット" title="コミット" style="width: 60%;">
         
 8. **プッシュ(Push)**
 
@@ -182,13 +182,13 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     ワークツリーで作業した内容をステージングによってインデックスに仮登録し、その後コミットでローカルリポジトリに反映した後、他の人へ変更を共有するためにプッシュするという流れが一般的です。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/push.png" alt="プッシュ" title="プッシュ" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/push.png" alt="プッシュ" title="プッシュ" style="width: 60%;">
     
     > topic
     > 
     > ここまでで、図の左のユーザは無事変更点を共有することができました。右のユーザがその変更点を取得するためには、前述のプルをすればよいということになります。
     > 
-    > <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-3.png" alt="プル3" title="プル3" style="width: 50%;">
+    > <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-3.png" alt="プル3" title="プル3" style="width: 60%;">
 
 9. **ブランチ(Branch)**
 
