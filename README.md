@@ -123,6 +123,8 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     ![プル①](https://github.com/Lium1126/github-practice-images/blob/master/pull-1.png "プル-1")
     
+    ---
+    
     ![プル②](https://github.com/Lium1126/github-practice-images/blob/master/pull-2.png "プル-2")
     
     **先述のクローンはリモートリポジトリの内容を丸ごと複製するのに対し、プルは差分のみを更新します。**
