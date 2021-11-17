@@ -95,17 +95,17 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
   
     リポジトリとは、資産(ファイルやディレクトリ)を格納している貯蔵庫のことです。
     
-    ![リポジトリ](https://github.com/Lium1126/github-practice-images/blob/master/repository.png "リポジトリ")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/repository.png" alt="リポジトリ" title="リポジトリ">
     
     リポジトリは***リモートリポジトリ***と***ローカルリポジトリ***の2種類に分けられます。
     
     ***リモートリポジトリ***とは、Gitサーバ内に保管されているリポジトリです。
     
-    ![リモートリポジトリ](https://github.com/Lium1126/github-practice-images/blob/master/remote-repository.png "リモートリポジトリ")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/remote-repository.png" alt="リモートリポジトリ" title="リモートリポジトリ">
     
     ***ローカルリポジトリ***とは、ユーザごとに保有するリポジトリです。
     
-    ![ローカルリポジトリ](https://github.com/Lium1126/github-practice-images/blob/master/local-repository.png "ローカルリポジトリ")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/local-repository.png" alt="ローカルリポジトリ" title="ローカルリポジトリ" style="width: 50%;">
     
     ユーザは、ローカルリポジトリ内で作業を行い、その変更をリモートリポジトリに反映させることで変更点を共有します。
 
@@ -115,17 +115,17 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     通常、最初のみ行います。
     
-    ![クローン](https://github.com/Lium1126/github-practice-images/blob/master/clone.png "クローン")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/clone.png" alt="クローン" title="クローン" style="width: 50%;">
     
 3. **プル(Pull)**
 
     プルとは、リモートリポジトリにある、持っていないファイルや他の誰かが更新したファイルをローカルリポジトリに反映させる操作です。すなわち、「自分のローカル環境を共有されているものの最新版に揃える」というような認識です。
     
-    ![プル①](https://github.com/Lium1126/github-practice-images/blob/master/pull-1.png "プル-1")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-1.png" alt="プル1" title="プル1" style="width: 50%;">
     
     ---
     
-    ![プル②](https://github.com/Lium1126/github-practice-images/blob/master/pull-2.png "プル-2")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-2.png" alt="プル2" title="プル2" style="width: 50%;">
     
     **先述のクローンはリモートリポジトリの内容を丸ごと複製するのに対し、プルは差分のみを更新します。**
     
@@ -160,7 +160,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     このインデックスが存在することにより、余分なファイルをコミットせずに済んだり、ファイルの一部だけの変更を記録してコミットすることができます。
     
-    ![インデックス](https://github.com/Lium1126/github-practice-images/blob/master/index.png "インデックス")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/index.png" alt="インデックス" title="インデックス" style="width: 50%;">
 
 7. **コミット(Commit)**
 
@@ -174,7 +174,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     コミットを実行する際に編集が記録されるファイルは、インデックスのファイルのみです。したがって、ステージングとはコミットするファイルを指定する操作であると言い換えることができます。
     
-    ![コミット](https://github.com/Lium1126/github-practice-images/blob/master/commit.png "コミット")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/commit.png" alt="コミット" title="コミット" style="width: 50%;">
         
 8. **プッシュ(Push)**
 
@@ -182,25 +182,27 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     ワークツリーで作業した内容をステージングによってインデックスに仮登録し、その後コミットでローカルリポジトリに反映した後、他の人へ変更を共有するためにプッシュするという流れが一般的です。
     
-    ![プッシュ](https://github.com/Lium1126/github-practice-images/blob/master/push.png "プッシュ")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/push.png" alt="プッシュ" title="プッシュ" style="width: 50%;">
     
     > topic
     > 
     > ここまでで、図の左のユーザは無事変更点を共有することができました。右のユーザがその変更点を取得するためには、前述のプルをすればよいということになります。
-    > ![プル③](https://github.com/Lium1126/github-practice-images/blob/master/pull-3.png "プル-3")
+    > 
+    > <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-3.png" alt="プル3" title="プル3" style="width: 50%;">
 
 9. **ブランチ(Branch)**
 
     ブランチとは、編集履歴を分岐させる機能です。これにより**あるブランチの編集が他のブランチに影響を及ぼさない**という状況を作ることができます。
     
     > topic
+    > 
     > ブランチは、あるブランチのある時点から切り出して作成(分岐)するため、ブランチを作ることを俗に「ブランチを切る」と表現します。
     
     図は、`main`という名前のブランチから`fix/a`という名前のブランチを作成している例です。ブランチを切ると他ブランチに編集の影響を及ぼさないため、`main`ブランチは`fix/a`ブランチに加えた変更がなされません。
     
     これにより、`fix/a`ブランチは`main`ブランチから独立して開発を進めることができます。
     
-    ![ブランチ](https://github.com/Lium1126/github-practice-images/blob/master/branch-1.png "ブランチを切る")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/branch-1.png" alt="ブランチを切る" title="ブランチを切る" style="width: 50%;">
 
 10. **マージ(Merge)**
 
@@ -208,7 +210,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     図では、マージを行なったことにより、`main`ブランチに`fix/a`ブランチの変更が反映されました。
     
-    ![マージ](https://github.com/Lium1126/github-practice-images/blob/master/branch-2.png "マージ")
+    <img src="https://github.com/Lium1126/github-practice-images/blob/master/branch-2.png" alt="マージ" title="マージ" style="width: 60%;">
 
 ## 6. ハンズオン
 
