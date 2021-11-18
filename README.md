@@ -352,7 +352,7 @@ $ git config --global user.email 'yosi.4sya@gmail.com'
 
 ```bash
 $ mkdir github_flow_handson
-$ cd github_flow__handson
+$ cd github_flow_handson
 $ git clone https://github.com/<AさんのGitHubアカウント名>/github-practice.git
 Cloning into 'github-practice'...
 remote: Enumerating objects: 50, done.
@@ -621,7 +621,7 @@ Changes to be committed:
 > `git add`コマンドは、`git add -A`とすると「`Untrack`や`Unmodified`の全てのファイルを一括でステージングする」ということができます。
 > しかし、不要なファイルまでステージングしてしまうといったリスクがあるため、乱用に注意してください。
 
-ここまでで、**sort.cpp*がインデックスに登録され、コミットの準備が整いました。コミットしてみましょう。
+ここまでで、**sort.cpp**がインデックスに登録され、コミットの準備が整いました。コミットしてみましょう。
 
 ```bash
 $ git commit
@@ -664,8 +664,8 @@ $ git commit
 
 ```bash
 $ git log
-commit 563a05d43b4363cc93b860012ae996e8d0f8c373 (HEAD -> fix-bubble-sort)
-Author: Lium1126 <yosi.4sya@gmail.com>
+commit <コミットID> (HEAD -> fix-bubble-sort)
+Author: <AさんのGitHubアカウント名> <<Aさんのメールアドレス>>
 Date:   Thu Nov 18 17:30:35 2021 +0900
 
     <コミットメッセージ>
@@ -774,18 +774,272 @@ Bさんからの承認を得ることができたら、マージすることが�
 
 ### 12. [両者]プル
 
+ここまでで、リモートリポジトリの`master`ブランチに変更を加えることができました。
+
+最新の`master`リモートブランチを追跡するために、ローカルブランチにプルしましょう。
+
+まず、`master`ブランチにいない場合は、`master`ブランチに切り替えます。
+
+```bash
+$ git branch
+* fix-bubble-sort
+  master
+$ git checkout master
+$ git branch
+  fix-bubble-sort
+* master
+```
+
+> note
+> 
+> 不要になったローカルブランチを削除しても構いません。ブランチを削除するコマンドは以下の通りです。
+> ```bash
+> $ git branch -d <ブランチ名>
+> ```
+> 
+> よって、`fix-bubble-sort`ブランチを削除する場合は
+> ```bash
+> $ git branch -d fix-bubble-sort
+> ```
+> を実行します。
+
+`master`ブランチに切り替えたら、リモートリポジトリの最新状態をプルしましょう。
+
+```bash
+$ git pull
+```
+
+**sort.cpp**の`sort`関数が、バブルソートから以下のように変更されていれば、Aさんの編集が正しく共有されています。
+
+```c++
+std::vector<int> sort(std::vector<int> data)
+{
+
+	// calculate bucket size
+	int bucket_size = data[0];
+	for (int i = 1; i < data.size(); i++)
+	{
+		if (data[i] > bucket_size)
+		{
+			bucket_size = data[i];
+		}
+	}
+	bucket_size += 1;
+
+	// create empty buckets
+	std::vector<int> bucket[bucket_size];
+
+	// put data elements into buckets depending on the value
+	for (int i = 0; i < data.size(); i++)
+	{
+		bucket[data[i]].push_back(data[i]);
+	}
+
+	// concatenate all buckets into data
+	int id = 0;
+	for (int i = 0; i < bucket_size; i++)
+	{
+		for (int j = 0; j < bucket[i].size(); j++)
+		{
+			data[id++] = bucket[i][j];
+		}
+	}
+
+	return data;
+}
+```
+
+> topic
+> 
+> フェッチを行う場合は以下のコマンドを利用します。
+> ```bash
+> $ git fetch
+> ```
+
 ### 13. [Bさん]ブランチの作成
 
-### 14. [Bさん]探索アルゴリズムの変更
+続いて、Bさんも同様に改修作業を行います。
+
+まずは作業用ブランチを作成しましょう。本節では、作業用ブランチを`fix-backet-sort`とします。
+
+```bash
+$ git branch
+* master
+$ git branch fix-backet-sort
+$ git branch
+  fix-backet-sort
+* master
+$ git checkout fix-backet-sort
+Switched to branch 'fix-backet-sort'
+```
+
+### 14. [Bさん]ソートアルゴリズムの変更
+
+エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/master/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のシェルソートに上書きペーストしてください。
+
+ソートアルゴリズムを変更したら、動作確認してください。
+
+```bash
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
 
 ### 15. [Bさん]コミット
 
+バケットソートからシェルソートへの変更をローカルリポジトリに登録するため、ステージングします。
+
+まずは**sort.cpp**の状態を確認します。
+
+```bash
+$ git status
+On branch fix-backet-sort
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   sort.cpp
+	
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+**sort.cpp**が`Modified`であることが確認できたら、ステージングを行います。
+
+```bash
+$ git add sort.cpp
+$ git status
+On branch fix-backet-sort
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   sort.cpp
+```
+
+**sort.cpp**が`Staged`になったら、コミットします。
+
+```
+$ git commit -m "<コミットメッセージ>"
+[fix-backet-sort fa826f1] <コミットメッセージ>
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+```
+
+コミットの履歴が残されていることを確認します。
+
+```bash
+$ git log
+commit <コミットID> (HEAD -> fix-backet-sort)
+Author: <BさんのGitHubアカウント名> <<Bさんのメールアドレス>>
+Date:   Thu Nov 18 17:30:35 2021 +0900
+
+    <コミットメッセージ>
+```
+
+直近のコミットの変更点を確認します。
+
+```bash
+$ git show
+```
+
+`sort`関数が書き換えられていることが確認できましたか？
+
 ### 16. [Bさん]プッシュ
 
-### 17. [Aさん]レビュー
+正しく編集・コミットできたら、リモートリポジトリに対してプッシュしましょう。
 
-### 18. [Bさん]マージ
+`fix-backet-sort`ブランチをリモートリポジトリにも作成し、そこにプッシュします。
 
-### 19. [両者]プル
+```bash
+$ git push --set-upstream origin fix-backet-sort
+```
 
-### 20. コンフリクト
+### 17. [Bさん]プルリクエスト作成
+
+https://github.com/<AさんのGitHubアカウント名>/github-practice/にアクセスし、プルリクエストを作成してください。
+
+### 18. [Aさん]レビュー
+
+Bさんがプッシュした変更点をプルし、動作確認を行いましょう。
+
+```bash
+$ git branch fix-backet-sort origin/fix-backet-sort
+$ git branch
+  fix-backet-sort
+* master
+$ git checkout fix-backet-sort
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
+
+正しく動作することが確認できたら、プルリクエストにレビューコメントをつけましょう。
+
+### 19. [Bさん]マージ
+
+Aさんから承認されたら、マージしましょう。
+
+### 20. [両者]プル
+
+両者プルして、ローカル`master`ブランチを最新のリモート`master`ブランチで更新します。
+
+```bash
+$ git branch
+* fix-backet-sort
+  master
+$ git checkout master
+Switched to branch 'master'
+$ git branch
+  fix-backet-sort
+* master
+$ git pull
+```
+
+**sort.cpp**の`sort`関数が以下のように変更されているか確認してください。
+
+```c++
+std::vector<int> sort(std::vector<int> data)
+{
+	for (int h = data.size() / 2; h > 0; h /= 2)
+	{
+		for (int i = h; i < data.size(); i += 1)
+		{
+			int k = data[i];
+
+			int j;
+			for (j = i; j >= h && data[j - h] > k; j -= h)
+			{
+				data[j] = data[j - h];
+			}
+
+			data[j] = k;
+		}
+	}
+
+	return data;
+}
+```
+
+### 21. コンフリクト
