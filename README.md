@@ -734,6 +734,9 @@ $ git branch
   fix-bubble-sort
 * master
 $ git checkout fix-bubble-sort
+$ git branch
+* fix-bubble-sort
+  master
 $ make
 Before sort
 ---------------------------------------------------------------
