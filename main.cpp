@@ -12,7 +12,6 @@ void printData(vector<int> data);
 
 int main(const int argc, const char *argv[])
 {
-	srand(time(NULL));
 	vector<int> data{29, 48, 70, 34, 92, 64, 26, 100, 15, 20, 82, 24, 79, 99, 87, 38, 14, 45, 94, 8};
 
 	cout << endl
