@@ -305,6 +305,10 @@ GitHub Flowでは、常に遵守されなければならない6つのルール�
 
 Aさんはこのリポジトリをフォークしてください。
 
+下図の「Fork」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/master/fork.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
+
 > note
 > 
 > フォークとは、Gitサーバ上のリポジトリを自分のリモートリポジトリに複製する操作です。よって、
@@ -577,7 +581,7 @@ Search for 75
 
 > topic
 > 
-> このように、**関数の外部仕様と内部仕様を分離することで、変更の影響が他に及ばないようにすることがチーム開発では重要です。**今回の例では、main.cppに影響を及ぼさず、sort.cppを改修することができました。
+> このように、関数の外部仕様と内部仕様を分離することで、変更の影響が他に及ばないようにすることがチーム開発では重要です。今回の例では、main.cppに影響を及ぼさず、sort.cppを改修することができました。
 
 ### 7. [Aさん]コミット
 
@@ -677,7 +681,7 @@ $ git show
 
 ローカルリポジトリにコミットできたので、リモートリポジトリに変更を反映しましょう。
 
-プッシュの前準備として、現在のブランチをリモートリポジトリにも作成します。
+プッシュと同時に現在のブランチをリモートリポジトリにも作成します。
 
 ```bash
 $ git push --set-upstream origin <ブランチ名>
@@ -689,17 +693,81 @@ $ git push --set-upstream origin <ブランチ名>
 $ git push --set-upstream origin fix-bubble-sort
 ```
 
-以上で準備が整ったので、プッシュします。
-
-```bash
-$ git push
-```
+> note
+> 
+> すでにリモートリポジトリにブランチが作成されている場合は
+> ```bash
+> $ git push
+> ```
+> を利用することができます。
 
 ### 9. [Aさん]プルリクエスト作成
 
+https://github.com/<AさんのGitHubアカウント名>/github-practice/にアクセスし、下図に示すような「Compare & pull request」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-request.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+
+下図のようにコメントを入力し、プルリクエストを作成します。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-request-comment.png" alt="プルリクエストコメント入力" title="プルリクエストコメント入力" style="border: solid 1px gray;">
+
 ### 10. [Bさん]レビュー
 
+リモートリポジトリの`fix-bubble-sort`ブランチからプルして、動作確認を行います。
+
+リモートリポジトリのブランチから、ローカルブランチを作成するには以下のコマンドを実行します。
+
+```bash
+$ git branch <ローカルブランチ名> <リモートブランチ名>
+```
+
+よって、以下のコマンドを実行します。
+
+```bash
+git branch fix-bubble-sort origin/fix-bubble-sort
+```
+
+ブランチを移動し、動作確認を行います。
+
+```bash
+$ git branch
+  fix-bubble-sort
+* master
+$ git checkout fix-bubble-sort
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
+
+プログラムの動作確認ができたら、下図のようなコメントをつけて承認の意思を表しましょう。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/master/LGTM.png" alt="GLTM" title="LGTM" style="border: solid 1px gray;">
+
+> topic
+> 
+> LGTMとは、「Looks Good To Mee(私目線OKよ)」という意味です。プルリクエスト承認時の慣習となっている掛け声です。
+> しかし、「とりあえずこれ言っておけばいいだろ」という思考停止に陥りやすいとして、この言葉を問題視する声も多くあります。
+
 ### 11. [Aさん]マージ
+
+Bさんからの承認を得ることができたら、マージすることができます。
+
+下図のボタンをクリックし、`master`ブランチにマージしましょう。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/master/merge-pull-request.png" alt="プルリクエストマージ" title="プルリクエストマージ" style="border: solid 1px gray;">
 
 ### 12. [両者]プル
 
