@@ -301,46 +301,420 @@ GitHub Flowでは、常に遵守されなければならない6つのルール�
 > ```
 > となります。
 
-### 1. リポジトリのフォーク
+### 1. [Aさん]リポジトリのフォーク
 
-### 2. Git設定の確認
+Aさんはこのリポジトリをフォークしてください。
 
-### 3. リポジトリのクローン
+> note
+> 
+> フォークとは、Gitサーバ上のリポジトリを自分のリモートリポジトリに複製する操作です。よって、
+> `<AさんのGitHubアカウント名>/github-practice`というリモートリポジトリが作成されます。以降は、このリポジトリに対して操作を行うことになります。
 
-実行確認
+### 2. [両者]Git設定の確認
 
-### 4. [Aさん]ブランチの作成
+以下のコマンドを実行して、出力に下記の表示が含まれているか確認してください。
 
-### 5. [Aさん]ソートアルゴリズムの変更
-
-### 6. [Aさん]コミット
-
-変更履歴の確認
 ```bash
-$ git log 
+$ git config -l
+user.email=<あなたのメールアドレス>
+user.name=<あなたのGitHubアカウント名>
+```
+
+上記の表示が得られない場合、お使いの環境にGitアカウントの設定がされていません。
+
+その場合、以下のコマンドで設定してください。
+
+```bash
+$ git config --global user.name '<自分の名前>'
+$ git config --global user.email '<自分のメールアドレス>'
+```
+
+例えば、筆者の場合は以下のようにします。
+
+```bash
+$ git config --global user.name 'Lium1126'
+$ git config --global user.email 'yosi.4sya@gmail.com'
+```
+
+> topic
+> 
+> `--global`オプションを指定することで、あらゆるリポジトリでこの設定が反映されるようにします。
+
+### 3. [両者]リポジトリのクローン
+
+任意のディレクトリに、フォークしたリポジトリをクローンします。
+
+以下のコマンドを実行してください。
+
+```bash
+$ mkdir github_flow_handson
+$ cd github_flow__handson
+$ git clone https://github.com/<AさんのGitHubアカウント名>/github-practice.git
+Cloning into 'github-practice'...
+remote: Enumerating objects: 50, done.
+remote: Counting objects: 100% (50/50), done.
+remote: Compressing objects: 100% (47/47), done.
+remote: Total 50 (delta 21), reused 17 (delta 2), pack-reused 0
+Receiving objects: 100% (50/50), 17.81 KiB | 1.48 MiB/s, done.
+Resolving deltas: 100% (21/21), done.
+$ ls
+github-practice
+$ cd github-practice
+```
+
+クローンが完了すると、リモートリポジトリにあるファイルが複製され、ローカルリポジトリが作成されます。
+
+> note
+> 
+> 空のローカルリポジトリを作成したい場合は、
+> ```bash
+> $ git init
+> ```
+> コマンドを利用します。これを使用した場合、プッシュ時にリモートリポジトリを作成します。
+
+ファイルが正しく複製されたか確認してください。
+
+```bash
+$ ls
+Makefile   README.md  doc        main.cpp   search.cpp search.hpp sort.cpp   sort.hpp
+```
+
+### 4. [両者]内容の確認
+
+クローンしたリポジトリには、既にプログラムを作成してあります。
+
+少し中身を見てみましょう。
+
+**main.cpp**内の`main`関数は以下のようになっています。
+
+```c++
+#define FIRST_TARGET 38
+#define SECOND_TARGET 75
+
+int main(const int argc, const char *argv[])
+{
+	srand(time(NULL));
+	vector<int> data{29, 48, 70, 34, 92, 64, 26, 100, 15, 20, 82, 24, 79, 99, 87, 38, 14, 45, 94, 8};
+
+	cout << endl
+		 << "Before sort" << endl;
+	cout << "---------------------------------------------------------------" << endl;
+	printData(data);
+	cout << endl;
+
+	data = githubPractice::sort(data);
+	cout << "After sort" << endl;
+	cout << "---------------------------------------------------------------" << endl;
+	printData(data);
+	cout << endl;
+
+	cout << "Search for " << FIRST_TARGET << endl;
+	cout << "---------------------------------------------------------------" << endl;
+	if (githubPractice::search(data, FIRST_TARGET))
+		cout << FIRST_TARGET << " is found!" << endl;
+	else
+		cout << FIRST_TARGET << " is not found!" << endl;
+	cout << endl;
+
+	cout << "Search for " << SECOND_TARGET << endl;
+	cout << "---------------------------------------------------------------" << endl;
+	if (githubPractice::search(data, SECOND_TARGET))
+		cout << SECOND_TARGET << " is found!" << endl;
+	else
+		cout << SECOND_TARGET << " is not found!" << endl;
+	cout << endl;
+
+	return 0;
+}
+```
+
+main.cppでは、配列dataを準備し一度内容を表示、その後ソートして同様に表示しています。その後、「38」と「75」がdataの中に含まれているか探索しています。
+
+ソートしている`sort`関数は**sort.cpp**に記述されており、***バブルソート***が実装されています。
+
+```c++
+std::vector<int> sort(std::vector<int> data)
+{
+  for (int i = 0; i < data.size() - 1; i++)
+  {
+    for (int j = data.size() - 1; j > i; j--)
+    {
+      if (data[j] < data[j - 1])
+      {
+        int tmp = data[j];
+        data[j] = data[j - 1];
+        data[j - 1] = tmp;
+      }
+    }
+  }
+  return data;
+}
+```
+
+また、指定した値を探索する`search`関数は**search.cpp**に実装されており、***線形探索***で実装されています。
+
+```c++
+bool search(std::vector<int> data, int target)
+{
+  for (int x : data)
+  {
+    if (x == target)
+      return true;
+  }
+
+  return false;
+}
+```
+
+プログラムを実行してみましょう。
+
+以下のコマンドを実行し、表示のような出力が得られれば正しくプログラムが動作しています。
+
+```bash
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
+
+### 5. [Aさん]ブランチの作成
+
+ここから、Aさんがこのプログラムに対して改修作業を行うという想定でハンズオンを行います。
+
+GitHub Flowでは、まず`master`ブランチから作業用ブランチを作成することから改修作業が始まります。
+
+まずは、今どのブランチにいるのか確認しましょう。
+
+```bash
+$ git branch
+* master
+```
+
+`git branch`は、ローカルリポジトリ内のブランチ一覧と、今いるブランチを表示します。<s>*</s>の付いているブランチが現在いるブランチです。
+
+ブランチを作成するには、以下のコマンドを使用します。このコマンドを実行すると、今いるブランチから分岐した新しいブランチが作成されます。
+
+```bash
+$ git branch <新しいブランチ名>
+```
+
+ここでは、以下のようなブランチ名で新たなブランチを作成しましょう。
+
+```bash
+$ git branch fix-bubble-sort
+```
+
+> topic
+> 
+> GitHub Flow以外の開発フローには、ブランチ名を規定しているものもあります。
+> 詳しくは、[Git Flow](https://qiita.com/KosukeSone/items/514dd24828b485c69a05)や[Issueドリブン開発](https://gist.github.com/Enchan1207/0ea2c7a7d6a3c16aea5683435d1972f8)について学習してください。
+
+ブランチが作成されたことを確認します。
+```bash
+$ git branch
+  fix-bubble-sort
+* master
+```
+
+`fix-bubble-sort`ブランチが作成されたことは確認できましたが、ユーザがいるブランチは`master`ブランチのままです。ブランチの切り替えは以下のコマンドを利用します。
+
+```bash
+$ git checkout <ブランチ名>
+```
+
+作業を行うのは`fix-bubble-sort`ブランチですから、以下のコマンドを実行してブランチを切り替えてください。
+
+```bash
+$ git checkout fix-bubble-sort
+Switched to branch 'fix-bubble-sort'
+$ git branch
+* fix-bubble-sort
+  master
+```
+
+`git branch`コマンドの表示にて、`fix-bubble-sort`ブランチに<s>*</s>が付されていることが確認できたら成功です。
+
+### 6. [Aさん]ソートアルゴリズムの変更
+
+作業用ブランチを作成することができたため、ここからAさんにプログラムを改修してもらいます。しかし、プログラミングは本教材の本質ではないため、具体的な編集作業は**コピー&ペースト**のみとします。
+
+<a href="https://github.com/Lium1126/github-practice/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>にいくつかのソートアルゴリズムの例を示しています。
+
+エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のバケットソートに書き換えてください(コピー&上書きペーストで構いません)。
+
+プログラムの変更ができたら、正しく動作することを確認してください。
+
+```bash
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
+
+> topic
+> 
+> このように、**関数の外部仕様と内部仕様を分離することで、変更の影響が他に及ばないようにすることがチーム開発では重要です。**今回の例では、main.cppに影響を及ぼさず、sort.cppを改修することができました。
+
+### 7. [Aさん]コミット
+
+変更を加えたファイルの状態を確認してみましょう。
+
+```bash
+$ git status
+On branch fix-bubble-sort
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   sort.cpp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+すると、**sort.cpp**が`Modified（編集済み）`となっていることがわかります。赤字は`Staged`でないことを表しています。
+
+変更をコミットするためには、ステージングをしてインデックスに登録しなければなりませんでした。そこで、以下のコマンドで**sort.cpp**をステージングします。
+
+```bash
+$ git add sort.cpp
+```
+
+ここでは何も表示されませんが、再度確認すると**sort.cpp**が`Staged`になっていることが確認できます。
+
+```bash
+$ git status
+On branch fix-bubble-sort
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   sort.cpp
+```
+
+> topic
+> 
+> `git add`コマンドは、`git add -A`とすると「`Untrack`や`Unmodified`の全てのファイルを一括でステージングする」ということができます。
+> しかし、不要なファイルまでステージングしてしまうといったリスクがあるため、乱用に注意してください。
+
+ここまでで、**sort.cpp*がインデックスに登録され、コミットの準備が整いました。コミットしてみましょう。
+
+```bash
+$ git commit
+```
+
+上記コマンドを実行すると、エディタが起動してコミットメッセージの入力が求められます。
+
+```bash
+<任意のコミットメッセージ>
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:   Thu Nov 18 17:30:35 2021 +0900
+#
+# On branch fix-bubble-sort
+#
+# Initial commit
+#
+# Changes to be committed:
+#   new file:   sort.cpp
+#
+```
+
+コミットメッセージを入力し、ファイルを保存すればコミット完了です。
+
+> note
+> 
+> コミットメッセージとは、そのコミットがどのような変更を加えたのか、なぜその変更を加えたのかを表すコメントです。
+> 変更履歴を辿ったり、以前のバージョンに戻したりするときの目印として活用します。
+
+> topic
+> 
+> `git commit`コマンドは、`-m`オプションを利用することでエディタを起動せずにコミットすることができます。書式は以下の通りです。
+> ```bash
+> $ git commit -m "<任意のコミットメッセージ>"
+> ```
+
+コミットの履歴が残されていることを確認します。
+
+```bash
+$ git log
+commit 563a05d43b4363cc93b860012ae996e8d0f8c373 (HEAD -> fix-bubble-sort)
+Author: Lium1126 <yosi.4sya@gmail.com>
+Date:   Thu Nov 18 17:30:35 2021 +0900
+
+    <コミットメッセージ>
+```
+
+`git show`コマンドを実行すると、直前の変更の差分を確認することができます。`+`の部分が追加された箇所、`-`の部分が削除された箇所です。
+
+```bash
 $ git show
 ```
 
-### 7. [Aさん]プッシュ
+### 8. [Aさん]プッシュ
 
-### 8. [Bさん]レビュー
+ローカルリポジトリにコミットできたので、リモートリポジトリに変更を反映しましょう。
 
-### 9. [Aさん]マージ
+プッシュの前準備として、現在のブランチをリモートリポジトリにも作成します。
 
-### 10. [両者]プル
+```bash
+$ git push --set-upstream origin <ブランチ名>
+```
 
-### 11. [Bさん]ブランチの作成
+変更を加えたブランチは`fix-bubble-sort`であったので、以下のコマンドを実行することになります。
 
-### 12. [Bさん]探索アルゴリズムの変更
+```bash
+$ git push --set-upstream origin fix-bubble-sort
+```
 
-### 13. [Bさん]コミット
+以上で準備が整ったので、プッシュします。
 
-### 14. [Bさん]プッシュ
+```bash
+$ git push
+```
 
-### 15. [Aさん]レビュー
+### 9. [Aさん]プルリクエスト作成
 
-### 16. [Bさん]マージ
+### 10. [Bさん]レビュー
 
-### 17. [両者]プル
+### 11. [Aさん]マージ
 
-### 18. コンフリクト
+### 12. [両者]プル
+
+### 13. [Bさん]ブランチの作成
+
+### 14. [Bさん]探索アルゴリズムの変更
+
+### 15. [Bさん]コミット
+
+### 16. [Bさん]プッシュ
+
+### 17. [Aさん]レビュー
+
+### 18. [Bさん]マージ
+
+### 19. [両者]プル
+
+### 20. コンフリクト
