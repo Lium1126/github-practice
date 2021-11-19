@@ -324,6 +324,24 @@ Aさんはこのリポジトリをフォークしてください。
 
 ###### スターも付けていただけると励みになります...
 
+フォークを行ったら、Aさんのgithub-practiceリポジトリにBさんがアクセスできるよう設定します。
+
+Aさんはhttps://github.com/<AさんのGitHubアカウント名>/github-practice/にアクセスしてください。
+
+次に、下図の赤く囲んでいる「Settings」をクリックしてください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/settings.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
+
+移った先のページで、「Manage access」をクリックしてください。認証を求められた場合は、パスワードを用いてログインしてください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/manage-access.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
+
+さらに、下図で囲った「Add people」から、BさんのGitHubアカウント名で検索し、このリポジトリに対してアクセス権を持つユーザとして追加してください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/add-people.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
+
+上記の操作が行われると、Bさんのメールアドレスに招待メールが届きます。メールの「View invitation」をクリックしてください。これで、BさんがAさんのgithub-practiceリポジトリに対するアクセス権限を得られます。
+
 ### 2. [両者]Git設定の確認
 
 以下のコマンドを実行して、出力に下記の表示が含まれているか確認してください。
