@@ -646,7 +646,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-すると、**sort.cpp**が`Modified（編集済み）`となっていることがわかります。赤字は`Staged`でないことを表しています。
+すると、**sort.cpp**が`Modified（編集済み）`となっていることがわかります。「Changes not staged for commit(変更はコミットのためのステージングがなされていません)」という表記から分かるように、**sort.cpp**は`Staged`ではありません。(赤い字であることからも、`Staged`でないことを判断できます)
 
 変更をコミットするためには、ステージングをしてインデックスに登録しなければなりませんでした。そこで、以下のコマンドで**sort.cpp**をステージングします。
 
