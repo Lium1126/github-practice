@@ -20,7 +20,7 @@ int main(const int argc, const char *argv[])
 	printData(data);
 	cout << endl;
 
-	data = githubPractice::sort(data);
+	data = github_practice::sort(data);
 	cout << "After sort" << endl;
 	cout << "---------------------------------------------------------------" << endl;
 	printData(data);
@@ -28,7 +28,7 @@ int main(const int argc, const char *argv[])
 
 	cout << "Search for " << FIRST_TARGET << endl;
 	cout << "---------------------------------------------------------------" << endl;
-	if (githubPractice::search(data, FIRST_TARGET))
+	if (github_practice::search(data, FIRST_TARGET))
 		cout << FIRST_TARGET << " is found!" << endl;
 	else
 		cout << FIRST_TARGET << " is not found!" << endl;
@@ -36,7 +36,7 @@ int main(const int argc, const char *argv[])
 
 	cout << "Search for " << SECOND_TARGET << endl;
 	cout << "---------------------------------------------------------------" << endl;
-	if (githubPractice::search(data, SECOND_TARGET))
+	if (github_practice::search(data, SECOND_TARGET))
 		cout << SECOND_TARGET << " is found!" << endl;
 	else
 		cout << SECOND_TARGET << " is not found!" << endl;

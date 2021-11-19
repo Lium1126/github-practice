@@ -1,6 +1,6 @@
 #include <vector>
 
-namespace githubPractice
+namespace github_practice
 {
 	/**
 	 * データを昇順にソートする

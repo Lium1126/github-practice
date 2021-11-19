@@ -1,7 +1,7 @@
 #include <vector>
 #include <algorithm>
 
-namespace githubPractice
+namespace github_practice
 {
 	/**
 	 * dataの中からtargetを探す
