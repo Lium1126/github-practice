@@ -4,11 +4,11 @@
 - Gitの基本的な操作をCLIから行うことができる
 - [GitHub Flow](https://docs.github.com/ja/get-started/quickstart/github-flow)に則った開発が行えるようになる
 
-## 3. 対象者
+## 2. 対象者
 - `ls`, `cd`などのコマンドを用いてファイルを操作できる人
 - C++ソースコードが多少なりとも読める人(高度な知識は必要ありません)
 
-## 4. 事前準備
+## 3. 事前準備
 以下の5点を済ませておいてください。
 
 - [Gitのインストール](#1-gitのインストール)
@@ -79,7 +79,7 @@ zsh: command not found: make
 ### 5. 2人組の編成
 本教材は2人1組となって活動します。以下、Aさん,Bさんという表現をするため、どちらがどちらの役を行うか決めておいてください。
 
-## 5. 前提知識
+## 4. 前提知識
 ### 1. Gitとは？
 前述の通り、Gitとはバージョン管理システムの一つです。
 
@@ -287,7 +287,7 @@ GitHub Flowでは、常に遵守されなければならない6つのルール�
 > 
 > より詳しく理解したい人は、　[https://gist.github.com/Gab-km/3705015](https://gist.github.com/Gab-km/3705015)を読むことをお勧めします。
 
-## 6. ハンズオン
+## 5. ハンズオン
 
 > note
 > 
@@ -717,6 +717,12 @@ https://github.com/<AさんのGitHubアカウント名>/github-practice/にア�
 
 リモートリポジトリの`fix-bubble-sort`ブランチからプルして、動作確認を行います。
 
+リモートリポジトリに`fix-bubble-sort`ブランチが作られたという変更をローカルブランチに反映するため、フェッチします。
+
+```bash
+$ git fetch
+```
+
 リモートリポジトリのブランチから、ローカルブランチを作成するには以下のコマンドを実行します。
 
 ```bash
@@ -726,7 +732,7 @@ $ git branch <ローカルブランチ名> <リモートブランチ名>
 よって、以下のコマンドを実行します。
 
 ```bash
-git branch fix-bubble-sort origin/fix-bubble-sort
+$ git branch fix-bubble-sort origin/fix-bubble-sort
 ```
 
 ブランチを移動し、動作確認を行います。
@@ -757,7 +763,9 @@ Search for 75
 75 is not found!
 ```
 
-プログラムの動作確認ができたら、下図のようなコメントをつけて承認の意思を表しましょう。
+動作確認ができたら、コードレビューをしましょう。**sort.cpp**の`sort`関数が正しく変更されているか確認してください。
+
+確認ができたら、下図のようなコメントをつけて承認の意思を表しましょう。
 
 <img src="https://github.com/Lium1126/github-practice-images/blob/master/LGTM.png" alt="GLTM" title="LGTM" style="border: solid 1px gray;">
 
@@ -862,17 +870,17 @@ std::vector<int> sort(std::vector<int> data)
 
 続いて、Bさんも同様に改修作業を行います。
 
-まずは作業用ブランチを作成しましょう。本節では、作業用ブランチを`fix-backet-sort`とします。
+まずは作業用ブランチを作成しましょう。本節では、作業用ブランチを`fix-bucket-sort`とします。
 
 ```bash
 $ git branch
 * master
-$ git branch fix-backet-sort
+$ git branch fix-bucket-sort
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * master
-$ git checkout fix-backet-sort
-Switched to branch 'fix-backet-sort'
+$ git checkout fix-bucket-sort
+Switched to branch 'fix-bucket-sort'
 ```
 
 ### 14. [Bさん]ソートアルゴリズムの変更
@@ -908,7 +916,7 @@ Search for 75
 
 ```bash
 $ git status
-On branch fix-backet-sort
+On branch fix-bucket-sort
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -922,7 +930,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```bash
 $ git add sort.cpp
 $ git status
-On branch fix-backet-sort
+On branch fix-bucket-sort
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	modified:   sort.cpp
@@ -932,7 +940,7 @@ Changes to be committed:
 
 ```
 $ git commit -m "<コミットメッセージ>"
-[fix-backet-sort fa826f1] <コミットメッセージ>
+[fix-bucket-sort fa826f1] <コミットメッセージ>
  1 file changed, 10 insertions(+), 6 deletions(-)
 ```
 
@@ -940,7 +948,7 @@ $ git commit -m "<コミットメッセージ>"
 
 ```bash
 $ git log
-commit <コミットID> (HEAD -> fix-backet-sort)
+commit <コミットID> (HEAD -> fix-bucket-sort)
 Author: <BさんのGitHubアカウント名> <<Bさんのメールアドレス>>
 Date:   Thu Nov 18 17:30:35 2021 +0900
 
@@ -959,10 +967,10 @@ $ git show
 
 正しく編集・コミットできたら、リモートリポジトリに対してプッシュしましょう。
 
-`fix-backet-sort`ブランチをリモートリポジトリにも作成し、そこにプッシュします。
+`fix-bucket-sort`ブランチをリモートリポジトリにも作成し、そこにプッシュします。
 
 ```bash
-$ git push --set-upstream origin fix-backet-sort
+$ git push --set-upstream origin fix-bucket-sort
 ```
 
 ### 17. [Bさん]プルリクエスト作成
@@ -974,11 +982,12 @@ https://github.com/<AさんのGitHubアカウント名>/github-practice/にア�
 Bさんがプッシュした変更点をプルし、動作確認を行いましょう。
 
 ```bash
-$ git branch fix-backet-sort origin/fix-backet-sort
+$ git fetch
+$ git branch fix-bucket-sort origin/fix-bucket-sort
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * master
-$ git checkout fix-backet-sort
+$ git checkout fix-bucket-sort
 $ make
 Before sort
 ---------------------------------------------------------------
@@ -997,7 +1006,9 @@ Search for 75
 75 is not found!
 ```
 
-正しく動作することが確認できたら、プルリクエストにレビューコメントをつけましょう。
+動作確認が完了したら、**sort.cpp**の`sort`関数が正しく変更されているか確認してください。
+
+確認できたら、プルリクエストにレビューコメントをつけましょう。
 
 ### 19. [Bさん]マージ
 
@@ -1009,12 +1020,12 @@ Aさんから承認されたら、マージしましょう。
 
 ```bash
 $ git branch
-* fix-backet-sort
+* fix-bucket-sort
   master
 $ git checkout master
 Switched to branch 'master'
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * master
 $ git pull
 ```
@@ -1052,12 +1063,13 @@ std::vector<int> sort(std::vector<int> data)
 
 コンフリクトが起きた場合、人力で対処しなくてはなりません。
 
-## 7. 最後に
+## 6. 最後に
 
 今回取り上げたGitHub Flowの他にも、ワークフローはたくさんあります。また、これらのワークフローを基にした開発フローが数多く存在します。
 
 色々な方法を身につけ、効率良いチーム開発ライフを送れることを願っております。
 
-## 8. 参考文献
+## 7. 参考文献
 > [GitHub 入門 - IIJ Bootcamp](https://iij.github.io/bootcamp/development/github/)
+> 
 > [サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
