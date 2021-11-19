@@ -735,6 +735,17 @@ https://github.com/<AさんのGitHubアカウント名>/github-practice/にア�
 
 <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
 
+上記のような表記が見られない場合は、下図の「Pull Requests」タブから「New pull request」をクリックしてください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request-tab.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+
+
+<strong>差分比較画面で、マージ先(「←」の左側)を、必ず「Lium1126/github-practice・main」から「<AさんのGitHubアカウント名>/github-practice・main」に変更してください。</strong>
+	
+その後、マージ元(「←」の右側)が「<AさんのGitHubアカウント名>/github-practice・fix-bubble-sort」となっていることを確認してください。上記2項目を確認したら、「Create pull request」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/compare-dst.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+
 下図のようにコメントを入力し、プルリクエストを作成します。
 
 <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request-comment.png" alt="プルリクエストコメント入力" title="プルリクエストコメント入力" style="border: solid 1px gray;">
@@ -1002,6 +1013,12 @@ $ git push --set-upstream origin fix-bucket-sort
 ### 17. [Bさん]プルリクエスト作成
 
 https://github.com/<AさんのGitHubアカウント名>/github-practice/にアクセスし、プルリクエストを作成してください。
+
+この際も、<strong>マージ先(「←」の左側)を「Lium1126/github-practice・main」から「<AさんのGitHubアカウント名>/github-practice・main」に変更することを忘れないでください。</strong>
+	    
+また、マージ元(「←」の右側)が「<AさんのGitHubアカウント名>/github-practice・fix-bucket-sort」となっていることを確認してください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/compare-dst.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
 
 ### 18. [Aさん]レビュー
 
