@@ -100,17 +100,17 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
   
     リポジトリとは、資産(ファイルやディレクトリ)を格納している貯蔵庫のことです。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/repository.png" alt="リポジトリ" title="リポジトリ">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/repository.png" alt="リポジトリ" title="リポジトリ">
     
     リポジトリは***リモートリポジトリ***と***ローカルリポジトリ***の2種類に分けられます。
     
     ***リモートリポジトリ***とは、Gitサーバ内に保管されているリポジトリです。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/remote-repository.png" alt="リモートリポジトリ" title="リモートリポジトリ">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/remote-repository.png" alt="リモートリポジトリ" title="リモートリポジトリ">
     
     ***ローカルリポジトリ***とは、ユーザごとに保有するリポジトリです。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/local-repository.png" alt="ローカルリポジトリ" title="ローカルリポジトリ" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/local-repository.png" alt="ローカルリポジトリ" title="ローカルリポジトリ" style="width: 50%;">
     
     ユーザは、ローカルリポジトリ内で作業を行い、その変更をリモートリポジトリに反映させることで変更点を共有します。
 
@@ -120,17 +120,17 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     通常、最初のみ行います。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/clone.png" alt="クローン" title="クローン" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/clone.png" alt="クローン" title="クローン" style="width: 50%;">
     
 3. **プル(Pull)**
 
     プルとは、リモートリポジトリにある、持っていないファイルや他の誰かが更新したファイルをローカルリポジトリに反映させる操作です。すなわち、「自分のローカル環境を共有されているものの最新版に揃える」というような認識です。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-1.png" alt="プル1" title="プル1" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-1.png" alt="プル1" title="プル1" style="width: 50%;">
     
     ---
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-2.png" alt="プル2" title="プル2" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-2.png" alt="プル2" title="プル2" style="width: 50%;">
     
     **先述のクローンはリモートリポジトリの内容を丸ごと複製するのに対し、プルは差分のみを更新します。**
     
@@ -165,7 +165,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     このインデックスが存在することにより、余分なファイルをコミットせずに済んだり、ファイルの一部だけの変更を記録してコミットすることができます。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/index.png" alt="インデックス" title="インデックス" style="width: 60%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/index.png" alt="インデックス" title="インデックス" style="width: 60%;">
 
 7. **コミット(Commit)**
 
@@ -179,7 +179,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     コミットを実行する際に編集が記録されるファイルは、インデックスのファイルのみです。したがって、ステージングとはコミットするファイルを指定する操作であると言い換えることができます。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/commit.png" alt="コミット" title="コミット" style="width: 60%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/commit.png" alt="コミット" title="コミット" style="width: 60%;">
         
 8. **プッシュ(Push)**
 
@@ -187,13 +187,13 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     ワークツリーで作業した内容をステージングによってインデックスに仮登録し、その後コミットでローカルリポジトリに反映した後、他の人へ変更を共有するためにプッシュするという流れが一般的です。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/push.png" alt="プッシュ" title="プッシュ" style="width: 60%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/push.png" alt="プッシュ" title="プッシュ" style="width: 60%;">
     
     > topic
     > 
     > ここまでで、図の左のユーザは無事変更点を共有することができました。右のユーザがその変更点を取得するためには、前述のプルをすればよいということになります。
     > 
-    > <img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-3.png" alt="プル3" title="プル3" style="width: 60%;">
+    > <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-3.png" alt="プル3" title="プル3" style="width: 60%;">
 
 9. **ブランチ(Branch)**
 
@@ -207,7 +207,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     これにより、`fix/a`ブランチは`main`ブランチから独立して開発を進めることができます。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/branch-1.png" alt="ブランチを切る" title="ブランチを切る" style="width: 50%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/branch-1.png" alt="ブランチを切る" title="ブランチを切る" style="width: 50%;">
 
 10. **マージ(Merge)**
 
@@ -215,7 +215,7 @@ Gitの挙動を把握する上で、理解が必要になる用語がいくつ�
     
     図では、マージを行なったことにより、`main`ブランチに`fix/a`ブランチの変更が反映されました。
     
-    <img src="https://github.com/Lium1126/github-practice-images/blob/master/branch-2.png" alt="マージ" title="マージ" style="width: 60%;">
+    <img src="https://github.com/Lium1126/github-practice-images/blob/main/branch-2.png" alt="マージ" title="マージ" style="width: 60%;">
 
 ### 2. GitHubとは？
 
@@ -227,30 +227,36 @@ GitHub Flowとは、GitHubを用いた効率的なチーム開発のために策
 
 GitHub Flowでは、常に遵守されなければならない6つのルールとして、以下を定めています。
 
-1. `master`ブランチのものは何であれデプロイ可能である
-2. 新しい何かに取り組む際は、説明的な名前のブランチを`master`から作成する（例: new-oauth2-scopes）
+1. `main`ブランチのものは何であれデプロイ可能である
+2. 新しい何かに取り組む際は、説明的な名前のブランチを`main`から作成する（例: new-oauth2-scopes）
 3. 作成したブランチにローカルでコミットし、サーバー上の同じ名前のブランチにも定期的に作業内容をpushする
 4. フィードバックや助言が欲しい時、ブランチをマージしてもよいと思ったときは、プルリクエストを作成する
-5. 他の誰かがレビューをして機能にOKを出してくれたら、あなたはコードを`master`へマージすることができる
-6. マージをして`master`へpushしたら、直ちにデプロイをする
+5. 他の誰かがレビューをして機能にOKを出してくれたら、あなたはコードを`main`へマージすることができる
+6. マージをして`main`へpushしたら、直ちにデプロイをする
+
+> note
+> 
+> GitHub Flowの規約を調べると、デフォルトのブランチ名は`master`と表記されています。
+> しかしGitHubは、IT業界の標準に合わせて2020年頃にデフォルトブランチの名前を`master`から`main`に変更しました。その後、この変更はGitHubに限らずGitLabなどのサービスでも行われ、現在主流のデフォルトブランチ名は`main`となっています。
+> この流れを受け、本教材はデフォルトブランチを`main`として話を進めています。
 
 それぞれ見ていきましょう。
 
-1. `master`ブランチのものは何であれデプロイ可能である
+1. `main`ブランチのものは何であれデプロイ可能である
 
     **GitHub Flowで、最も重要なルールです。**
 
-    `master`ブランチとは、リポジトリが作られた最初の段階から存在する大元のブランチです。
+    `main`ブランチとは、リポジトリが作られた最初の段階から存在する大元のブランチです。
 
     また、デプロイとは「本番環境でプログラムを動作させ、ユーザに使ってもらえる状態にする」などを含めた、ソフトウェアを利用できるようにすること全般を指す言葉です。
     
-    すなわち、このルールは、**`master`ブランチは常にバグを含まないものにしろ**というような意味合いとなります。
+    すなわち、このルールは、**`main`ブランチは常にバグを含まないものにしろ**というような意味合いとなります。
 
-2. 新しい何かに取り組む際は、説明的な名前のブランチを`master`から作成する（例: new-oauth2-scopes）
+2. 新しい何かに取り組む際は、説明的な名前のブランチを`main`から作成する（例: new-oauth2-scopes）
 
     ここでいう新しい何かとは、新機能追加やバグ修正などの開発作業です。
     
-    このルールにより、開発者は「`master`ブランチから作成したブランチにて作業を行い、`master`ブランチにマージする」というシンプルな活動をとることになります。
+    このルールにより、開発者は「`main`ブランチから作成したブランチにて作業を行い、`main`ブランチにマージする」というシンプルな活動をとることになります。
     
     また、作業用ブランチを作成する際には、そのブランチがどのような作業を目的としているか分かりやすいブランチ名をつけるよう決められています。
     
@@ -264,9 +270,9 @@ GitHub Flowでは、常に遵守されなければならない6つのルール�
 
 4. フィードバックや助言が欲しい時、ブランチをマージしてもよいと思ったときは、プルリクエストを作成する
 
-    プルリクエストとは、GitHub上で「このプログラムで大丈夫そうですか〜？」「誰か動作確認してくれませんか〜？」というように、他者にアドバイスやレビューを依頼する機能です。
+    プルリクエストとは、GitHub上で「このプログラムで大丈夫そうですか？」「誰か動作確認してくれませんか？」というように、他者にアドバイスやレビューを依頼する機能です。
     
-5. 他の誰かがレビューをして機能にOKを出してくれたら、あなたはコードを`master`へマージすることができる
+5. 他の誰かがレビューをして機能にOKを出してくれたら、あなたはコードを`main`へマージすることができる
 
     ここでいうレビューとは、ルール4で作成したプルリクエストに集まった評価です。
     
@@ -277,11 +283,11 @@ GitHub Flowでは、常に遵守されなければならない6つのルール�
     > このとき、「〇〇人OKを出したらマージしてよい」といったような規定は設けられていません。
     > 何人以上や、どういった役職の人が承認したらマージできるのかといったようなルールは組織ごとに策定してください。
 
-6. マージをして`master`へpushしたら、直ちにデプロイをする
+6. マージをして`main`へpushしたら、直ちにデプロイをする
 
-    全ての作業用ブランチは`master`ブランチから作成されるため(ルール2)、`master`ブランチは常に最新の状態でなければなりません。
+    全ての作業用ブランチは`main`ブランチから作成されるため(ルール2)、`main`ブランチは常に最新の状態でなければなりません。
     
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/github-flow.png" alt="GitHub Flow" title="GitHub Flow" style="width: 60%;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/github-flow.png" alt="GitHub Flow" title="GitHub Flow" style="width: 60%;">
 
 > note
 > 
@@ -307,7 +313,7 @@ Aさんはこのリポジトリをフォークしてください。
 
 下図の「Fork」をクリックします。
 
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/fork.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/fork.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
 
 > note
 > 
@@ -497,13 +503,13 @@ Search for 75
 
 ここから、Aさんがこのプログラムに対して改修作業を行うという想定でハンズオンを行います。
 
-GitHub Flowでは、まず`master`ブランチから作業用ブランチを作成することから改修作業が始まります。
+GitHub Flowでは、まず`main`ブランチから作業用ブランチを作成することから改修作業が始まります。
 
 まずは、今どのブランチにいるのか確認しましょう。
 
 ```bash
 $ git branch
-* master
+* main
 ```
 
 `git branch`は、ローカルリポジトリ内のブランチ一覧と、今いるブランチを表示します。<s>*</s>の付いているブランチが現在いるブランチです。
@@ -529,10 +535,10 @@ $ git branch fix-bubble-sort
 ```bash
 $ git branch
   fix-bubble-sort
-* master
+* main
 ```
 
-`fix-bubble-sort`ブランチが作成されたことは確認できましたが、ユーザがいるブランチは`master`ブランチのままです。ブランチの切り替えは以下のコマンドを利用します。
+`fix-bubble-sort`ブランチが作成されたことは確認できましたが、ユーザがいるブランチは`main`ブランチのままです。ブランチの切り替えは以下のコマンドを利用します。
 
 ```bash
 $ git checkout <ブランチ名>
@@ -545,7 +551,7 @@ $ git checkout fix-bubble-sort
 Switched to branch 'fix-bubble-sort'
 $ git branch
 * fix-bubble-sort
-  master
+  main
 ```
 
 `git branch`コマンドの表示にて、`fix-bubble-sort`ブランチに<s>*</s>が付されていることが確認できたら成功です。
@@ -554,9 +560,9 @@ $ git branch
 
 作業用ブランチを作成することができたため、ここからAさんにプログラムを改修してもらいます。しかし、プログラミングは本教材の本質ではないため、具体的な編集作業は**コピー&ペースト**のみとします。
 
-<a href="https://github.com/Lium1126/github-practice/blob/master/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>にいくつかのソートアルゴリズムの例を示しています。
+<a href="https://github.com/Lium1126/github-practice/blob/main/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>にいくつかのソートアルゴリズムの例を示しています。
 
-エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/master/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のバケットソートに書き換えてください(コピー&上書きペーストで構いません)。
+エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のバケットソートに書き換えてください(コピー&上書きペーストで構いません)。
 
 プログラムの変更ができたら、正しく動作することを確認してください。
 
@@ -705,11 +711,11 @@ $ git push --set-upstream origin fix-bubble-sort
 
 https://github.com/<AさんのGitHubアカウント名>/github-practice/にアクセスし、下図に示すような「Compare & pull request」をクリックします。
 
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-request.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
 
 下図のようにコメントを入力し、プルリクエストを作成します。
 
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/pull-request-comment.png" alt="プルリクエストコメント入力" title="プルリクエストコメント入力" style="border: solid 1px gray;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request-comment.png" alt="プルリクエストコメント入力" title="プルリクエストコメント入力" style="border: solid 1px gray;">
 
 ### 10. [Bさん]レビュー
 
@@ -732,11 +738,11 @@ git branch fix-bubble-sort origin/fix-bubble-sort
 ```bash
 $ git branch
   fix-bubble-sort
-* master
+* main
 $ git checkout fix-bubble-sort
 $ git branch
 * fix-bubble-sort
-  master
+  main
 $ make
 Before sort
 ---------------------------------------------------------------
@@ -757,7 +763,7 @@ Search for 75
 
 プログラムの動作確認ができたら、下図のようなコメントをつけて承認の意思を表しましょう。
 
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/LGTM.png" alt="GLTM" title="LGTM" style="border: solid 1px gray;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/LGTM.png" alt="GLTM" title="LGTM" style="border: solid 1px gray;">
 
 > topic
 > 
@@ -768,26 +774,26 @@ Search for 75
 
 Bさんからの承認を得ることができたら、マージすることができます。
 
-下図のボタンをクリックし、`master`ブランチにマージしましょう。
+下図のボタンをクリックし、`main`ブランチにマージしましょう。
 
-<img src="https://github.com/Lium1126/github-practice-images/blob/master/merge-pull-request.png" alt="プルリクエストマージ" title="プルリクエストマージ" style="border: solid 1px gray;">
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/merge-pull-request.png" alt="プルリクエストマージ" title="プルリクエストマージ" style="border: solid 1px gray;">
 
 ### 12. [両者]プル
 
-ここまでで、リモートリポジトリの`master`ブランチに変更を加えることができました。
+ここまでで、リモートリポジトリの`main`ブランチに変更を加えることができました。
 
-最新の`master`リモートブランチを追跡するために、ローカルブランチにプルしましょう。
+最新の`main`リモートブランチを追跡するために、ローカルブランチにプルしましょう。
 
-まず、`master`ブランチにいない場合は、`master`ブランチに切り替えます。
+まず、`main`ブランチにいない場合は、`main`ブランチに切り替えます。
 
 ```bash
 $ git branch
 * fix-bubble-sort
-  master
-$ git checkout master
+  main
+$ git checkout main
 $ git branch
   fix-bubble-sort
-* master
+* main
 ```
 
 > note
@@ -803,7 +809,7 @@ $ git branch
 > ```
 > を実行します。
 
-`master`ブランチに切り替えたら、リモートリポジトリの最新状態をプルしましょう。
+`main`ブランチに切り替えたら、リモートリポジトリの最新状態をプルしましょう。
 
 ```bash
 $ git pull
@@ -864,18 +870,18 @@ std::vector<int> sort(std::vector<int> data)
 
 ```bash
 $ git branch
-* master
+* main
 $ git branch fix-backet-sort
 $ git branch
   fix-backet-sort
-* master
+* main
 $ git checkout fix-backet-sort
 Switched to branch 'fix-backet-sort'
 ```
 
 ### 14. [Bさん]ソートアルゴリズムの変更
 
-エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/master/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のシェルソートに上書きペーストしてください。
+エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のシェルソートに上書きペーストしてください。
 
 ソートアルゴリズムを変更したら、動作確認してください。
 
@@ -975,7 +981,7 @@ Bさんがプッシュした変更点をプルし、動作確認を行いまし�
 $ git branch fix-backet-sort origin/fix-backet-sort
 $ git branch
   fix-backet-sort
-* master
+* main
 $ git checkout fix-backet-sort
 $ make
 Before sort
@@ -1003,17 +1009,17 @@ Aさんから承認されたら、マージしましょう。
 
 ### 20. [両者]プル
 
-両者プルして、ローカル`master`ブランチを最新のリモート`master`ブランチで更新します。
+両者プルして、ローカル`main`ブランチを最新のリモート`main`ブランチで更新します。
 
 ```bash
 $ git branch
 * fix-backet-sort
-  master
-$ git checkout master
-Switched to branch 'master'
+  main
+$ git checkout main
+Switched to branch 'main'
 $ git branch
   fix-backet-sort
-* master
+* main
 $ git pull
 ```
 
