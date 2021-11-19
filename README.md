@@ -225,7 +225,7 @@ GitHubは、Gitを利用するホスティングサービスの一つです。
 
 ### 3. GitHub Flowとは？
 
-GitHub Flowとは、GitHubを用いた効率的なチーム開発のために策定されたルール(規約)の一つです。
+GitHub Flowとは、GitHubを用いた効率的なチーム開発のために策定されたワークフローの一つです。ワークフローってなに？という方はひとまず、業務活動をパターン化するためのルールや規約だと思ってください。
 
 GitHub Flowでは、常に遵守されなければならない6つのルールとして、以下を定めています。
 
@@ -526,7 +526,7 @@ $ git branch fix-bubble-sort
 
 > topic
 > 
-> GitHub Flow以外の開発フローには、ブランチ名を規定しているものもあります。
+> GitHub Flow以外のワークフローには、ブランチ名を規定しているものもあります。
 > 詳しくは、[Git Flow](https://qiita.com/KosukeSone/items/514dd24828b485c69a05)や[Issueドリブン開発](https://gist.github.com/Enchan1207/0ea2c7a7d6a3c16aea5683435d1972f8)について学習してください。
 
 ブランチが作成されたことを確認します。
