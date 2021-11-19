@@ -916,13 +916,6 @@ std::vector<int> sort(std::vector<int> data)
 }
 ```
 
-> topic
-> 
-> フェッチを行う場合は以下のコマンドを利用します。
-> ```bash
-> $ git fetch
-> ```
-
 ### 13. [Bさん]ブランチの作成
 
 続いて、Bさんも同様に改修作業を行います。
@@ -932,17 +925,17 @@ std::vector<int> sort(std::vector<int> data)
 ```bash
 $ git branch
 * main
-$ git branch fix-backet-sort
+$ git branch fix-bucket-sort
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * main
-$ git checkout fix-backet-sort
-Switched to branch 'fix-backet-sort'
+$ git checkout fix-bucket-sort
+Switched to branch 'fix-bucket-sort'
 ```
 
 ### 14. [Bさん]ソートアルゴリズムの変更
 
-エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のシェルソートに上書きペーストしてください。
+エディタを使って、**sort.cpp**の`sort`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/sort.md" target="_blank" rel="noopener noreferrer">ソートアルゴリズム集</a>のシェルソートにコピー&上書きペーストしてください。
 
 ソートアルゴリズムを変更したら、動作確認してください。
 
@@ -1048,7 +1041,7 @@ Bさんがプッシュした変更点をプルし、動作確認を行いまし�
 $ git fetch
 $ git branch fix-bucket-sort origin/fix-bucket-sort
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * main
 $ git checkout fix-bucket-sort
 $ make
@@ -1083,12 +1076,12 @@ Aさんから承認されたら、マージしましょう。
 
 ```bash
 $ git branch
-* fix-backet-sort
+* fix-bucket-sort
   main
 $ git checkout main
 Switched to branch 'main'
 $ git branch
-  fix-backet-sort
+  fix-bucket-sort
 * main
 $ git pull
 ```
