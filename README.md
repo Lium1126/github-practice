@@ -12,7 +12,7 @@
 以下の5点を済ませておいてください。
 
 - [Gitのインストール](#1-gitのインストール)
-- [GitHubアカウントの作成](#2-githubアカウントの作成)
+- [GitHubアカウントの準備](#2-githubアカウントの準備)
 - [エディタの準備](#3-エディタの準備)
 - [makeのインストール](#4-makeのインストール)
 - [2人組の編成](#5-2人組の編成)
@@ -44,9 +44,11 @@ OSやディストリビューションに合わせてインストールしてく
 > git version 2.30.1
 > ```
 
-### 2. GitHubアカウントの作成
+### 2. GitHubアカウントの準備
 
 [GitHub](https://github.com/)からアカウントを作成してください。
+
+また、GitHubは2021年8月からプッシュなどの操作時でのパスワード認証を廃止しています。パーソナルアクセストークンを発行していない方は、[こちら](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)を参考に発行しておいてください。
 
 ### 3. エディタの準備
 
