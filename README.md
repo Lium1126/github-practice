@@ -462,25 +462,18 @@ int main(const int argc, const char *argv[])
 
 	cout << "Search for " << FIRST_TARGET << endl;
 	cout << "---------------------------------------------------------------" << endl;
-	if (github_practice::search(data, FIRST_TARGET))
-		cout << FIRST_TARGET << " is found!" << endl;
-	else
-		cout << FIRST_TARGET << " is not found!" << endl;
+	cout << FIRST_TARGET << (github_practice::search(data, FIRST_TARGET) ? " is found!" : " is not found!") << endl;
 	cout << endl;
 
 	cout << "Search for " << SECOND_TARGET << endl;
 	cout << "---------------------------------------------------------------" << endl;
-	if (github_practice::search(data, SECOND_TARGET))
-		cout << SECOND_TARGET << " is found!" << endl;
-	else
-		cout << SECOND_TARGET << " is not found!" << endl;
-	cout << endl;
+	cout << SECOND_TARGET << (github_practice::search(data, SECOND_TARGET) ? " is found!" : " is not found!") << endl;
 
 	return 0;
 }
 ```
 
-main.cppでは、配列dataを準備し一度内容を表示、その後ソートして同様に表示しています。その後、「38」と「75」がdataの中に含まれているか探索しています。
+main.cppでは、配列dataを準備し一度内容を表示、その後ソートして同様に表示しています。その後、「38」と「75」がdataの中に含まれているか探索しています(プログラムが読めなくても、「そういった処理をしているのか」程度の理解で問題ありません)。
 
 ソートしている`sort`関数は**sort.cpp**に記述されており、***バブルソート***が実装されています。
 
