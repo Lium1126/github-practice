@@ -336,14 +336,14 @@ Aさんはこのリポジトリをフォークしてください。
 
 下図の「Fork」をクリックします。
 
+###### フォークする前に隣のStarも押していただけると励みになります...
+
 <img src="https://github.com/Lium1126/github-practice-images/blob/main/fork.png" alt="フォーク" title="フォーク" style="border: solid 1px gray;">
 
 > note
 > 
 > フォークとは、Gitサーバ上のリポジトリを自分のリモートリポジトリに複製する操作です。よって、
 > `<AさんのGitHubアカウント名>/github-practice`というリモートリポジトリが作成されます。以降は、このリポジトリに対して操作を行うことになります。
-
-###### スターも付けていただけると励みになります...
 
 フォークを行ったら、Aさんのgithub-practiceリポジトリにBさんがアクセスできるよう設定します。
 
