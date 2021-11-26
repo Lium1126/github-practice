@@ -12,16 +12,19 @@ namespace githubPractice
 	 */
 	bool search(std::vector<int> data, int target)
 	{
-		int i = 0;
-		std::vector<int> cp(data.size());
-		std::copy(data.begin(), data.end(), cp.begin());
+		int left = 0, right = data.size(), mid;
 
-		// set guard
-		cp.push_back(target);
+		while (left < right)
+		{
+			mid = (left + right) / 2;
+			if (data[mid] == target)
+				return true;
+			else if (target < data[mid])
+				right = mid;
+			else if (data[mid] < target)
+				left = mid + 1;
+		}
 
-		while (cp[i] != target)
-			i++;
-
-		return i != data.size();
+		return false;
 	}
 }
