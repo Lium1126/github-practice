@@ -752,7 +752,6 @@ https://github.com/<AさんのGitHubアカウント名>/github-practice/にア�
 
 <img src="https://github.com/Lium1126/github-practice-images/blob/main/pull-request-tab.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
 
-
 <strong>差分比較画面で、マージ先(「←」の左側)を、必ず「Lium1126/github-practice・main」から「<AさんのGitHubアカウント名>/github-practice・main」に変更してください。</strong>
 	
 その後、マージ元(「←」の右側)が「<AさんのGitHubアカウント名>/github-practice・fix-bubble-sort」となっていることを確認してください。上記2項目を確認したら、「Create pull request」をクリックします。
@@ -1106,11 +1105,61 @@ std::vector<int> sort(std::vector<int> data)
 
 ### 21. コンフリクト
 
-チーム開発では、コンフリクト(競合)という事象が起こることがあります。
+チーム開発では、コンフリクト(競合)という事象が起こることがあります。コンフリクトとは、**複数人の変更箇所が重複してしまい、マージすると誰かしらの変更が失われてしまう**という状態です。
 
-コンフリクトとは、**複数人の変更箇所が重複してしまい、マージすると誰かしらの変更が失われてしまう**という状態です。
+コンフリクトが起きた場合、人力で対処しなくてはなりません。以下、実際に解消する活動を行います。
 
-コンフリクトが起きた場合、人力で対処しなくてはなりません。
+### [両者]作業用ブランチ作成
+
+Aさんは`fix-search-a`ブランチ、Bさんは`fix-search-b`ブランチを作成してください。
+
+```bash
+$ git branch fix-search-a
+	    or
+$ git branch fix-search-b
+```
+
+### [Aさん]編集
+
+まずはAさんにプログラムの変更を行ってもらいます。その後、Bさんがその変更点と重複するような箇所の編集作業を行ってもらいます。
+
+Aさんは作成した作業用ブランチに移動してください。
+
+```bash
+$ git checkout fix-search-a
+```
+
+その後、`search.cpp`の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**番兵**に変更してください。
+
+変更作業が完了したら、動作確認を行ってください。
+
+```bash
+$ make
+```
+正しく動作したら、状態を確認し、変更をリモートリポジトリに反映してください。
+
+```bash
+$ git status
+$ git add search.cpp
+$ git commit -m "<コミットメッセージ>"
+$ git push --set-upstream origin fix-search-a
+```
+
+プッシュしたら、https://github.com/<AさんのGitHubアカウント名>/github-practiceにアクセスし、下図の「Compare & pull request」をクリックしてプルリクエストを作成します。図のような表示が無い場合、「Pull request」タブの「New pull request」から作成します。
+	    
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/a-create-pullrequest.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+
+この際も、<strong>差分比較画面で、マージ先(「←」の左側)を、必ず「Lium1126/github-practice・main」から「<AさんのGitHubアカウント名>/github-practice・main」に変更してください。</strong>
+	
+その後、マージ元(「←」の右側)が「<AさんのGitHubアカウント名>/github-practice・fix-search-a」となっていることを確認してください。上記2項目を確認したら、「Create pull request」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pullrequest-change.png" alt="マージ先変更" title="マージ先変更" style="border: solid 1px gray;">
+	    
+コメントを入力し、プルリクエストを作成します。
+	    
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pullrequest-comment.png" alt="プルリクエストコメント" title="プルリクエストコメント" style="border: solid 1px gray;">
+
+本来なら、マージするためにはBさんがレビューを行いますが、ここでは「Bさんの知らないところでレビューが行われ、認知外でマージされてしまっていた」という想定とします。Aさんは、先ほど作成したプルリクエストをマージしてください。
 
 ## 6. 最後に
 
