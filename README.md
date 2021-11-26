@@ -1161,6 +1161,64 @@ $ git push --set-upstream origin fix-search-a
 
 本来なら、マージするためにはBさんがレビューを行いますが、ここでは「Bさんの知らないところでレビューが行われ、認知外でマージされてしまっていた」という想定とします。Aさんは、先ほど作成したプルリクエストをマージしてください。
 
+### [Bさん]コンフリクトを発生させてみる
+
+現状、前節のAさんのマージによって、`search`関数が変更されています。Bさんの作業用ブランチはその変更以前に作成されているため、`search`関数が変更されていることを追跡できていません。その状態で、Bさんも`search`関数を変更し、コンフリクトを発生させてみましょう。
+
+まずは、ブランチを移動してください。
+
+```bash
+$ git checkout fix-search-b
+```
+
+Bさんは、`search.cpp`の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**二分探索**に変更してください。
+
+変更できたら、Bさんのローカル環境で動作確認しましょう。
+
+```bash
+$ make
+```
+
+正しく動作することが確認できたら、状態を確認し、ローカルリポジトリにコミットしましょう。
+
+```bash
+$ git status
+$ git add search.cpp
+$ git commit -m "<コミットメッセージ>"
+```
+
+変更をリモートリポジトリにプッシュしてください。
+
+```bash
+$ git push --set-upstream origin fix-search-b
+```
+
+ここまでで、探索アルゴリズムを**二分探索**に変更したという更新が、リモートリポジトリの`fix-search-b`ブランチに反映されました。これまで通り、プルリクエストを作成しましょう。https://<AさんのGitHubアカウント名>/github-practice/にアクセスし、下図の「Compare & pull request」をクリックします。表示が無い場合は、「Pull request」タブから「New pull request」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/b-create-pullrequest.png" alt="プルリクエスト作成" title="プルリクエスト作成" style="border: solid 1px gray;">
+
+これまでと同様に、<strong>差分比較画面で、マージ先(「←」の左側)を、必ず「Lium1126/github-practice・main」から「<AさんのGitHubアカウント名>/github-practice・main」に変更してください。</strong>
+	
+その後、マージ元(「←」の右側)が「<AさんのGitHubアカウント名>/github-practice・fix-search-b」となっていることを確認してください。上記2項目を確認したら、「Create pull request」をクリックします。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/pullrequest-change2.png" alt="マージ先変更" title="マージ先変更" style="border: solid 1px gray;">
+
+すると、下図のように「Can't automatically merge.」と表示されます。コンフリクトが発生しているマージを行おうとする際に見られる表示です。今回は、このままプルリクエストを作成します。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/cant-merge.png" alt="Can't automatically merge" title="Can't automatically merge" style="border: solid 1px gray;">
+
+プルリクエストが作成されると下図に示すように、コンフリクトが発生している旨のメッセージが確認できます。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/conflict.png" alt="コンフリクト発生" title="コンフリクト発生" style="border: solid 1px gray;">
+
+### [Bさん]コンフリクトの解消
+
+コンフリクトを解消するにあたって、2通りの手順が存在します。
+
+#### 1. CLI+エディタ
+
+#### 2. Webページ上で解消
+
 ## 6. 最後に
 
 今回取り上げたGitHub Flowの他にも、ワークフローはたくさんあります。また、これらのワークフローを基にした開発フローが数多く存在します。
