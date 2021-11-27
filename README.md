@@ -1121,7 +1121,7 @@ $ git branch fix-search-b
 
 ### [Aさん]編集
 
-まずはAさんにプログラムの変更を行ってもらいます。その後、Bさんがその変更点と重複するような箇所の編集作業を行ってもらいます。
+まずはAさんにプログラムの変更を行ってもらいます。その後、Bさんがその変更点と重複するような箇所を編集し、コンフリクトを発生させます。
 
 Aさんは作成した作業用ブランチに移動してください。
 
@@ -1129,7 +1129,7 @@ Aさんは作成した作業用ブランチに移動してください。
 $ git checkout fix-search-a
 ```
 
-その後、`search.cpp`の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**番兵**に変更してください。
+その後、**search.cpp**の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**番兵**に変更してください。
 
 変更作業が完了したら、動作確認を行ってください。
 
@@ -1163,7 +1163,7 @@ $ git push --set-upstream origin fix-search-a
 
 ### [Bさん]コンフリクトを発生させてみる
 
-現状、前節のAさんのマージによって、`search`関数が変更されています。Bさんの作業用ブランチはその変更以前に作成されているため、`search`関数が変更されていることを追跡できていません。その状態で、Bさんも`search`関数を変更し、コンフリクトを発生させてみましょう。
+現状、前節のAさんのマージによって、`search`関数が**番兵**に変更されています。Bさんの作業用ブランチはその変更以前に作成されているため、`search`関数が変更されていることを追跡できていません。その状態で、Bさんも`search`関数を変更し、コンフリクトを発生させてみましょう。
 
 まずは、ブランチを移動してください。
 
@@ -1171,7 +1171,7 @@ $ git push --set-upstream origin fix-search-a
 $ git checkout fix-search-b
 ```
 
-Bさんは、`search.cpp`の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**二分探索**に変更してください。
+Bさんは、**search.cpp**の`search`関数を、<a href="https://github.com/Lium1126/github-practice/blob/main/doc/search.md" target="_blank" rel="noopener noreferrer">探索アルゴリズム集</a>の**二分探索**に変更してください。
 
 変更できたら、Bさんのローカル環境で動作確認しましょう。
 
@@ -1220,23 +1220,18 @@ $ git push --set-upstream origin fix-search-b
 
 #### 1. CLI+エディタ
 
-`main`ブランチに移動します。
+`main`ブランチに現在のリモートブランチの状態をプルします。プルした後、作業用ブランチに切り替えます。
 
 ```bash
 $ git checkout main
-```
-
-リモートリポジトリの`main`ブランチから、ローカルリポジトリの`main`ブランチに対してプルを行います。
-
-```bash
 $ git pull origin main
+$ git checkout fix-search-b
 ```
 
-以下のコマンドで、最新版(Aさんが施した**番兵**への変更が反映された状態)を作業用ブランチへマージしようと試みてください。
-すると、「コンフリクトが発生していて自動的にマージすることができない」と表示されるかと思います。
+以下のコマンドで、最新版(Aさんが施した**番兵**への変更が反映された状態)の`main`ブランチへ`fix-search-b`ブランチをマージしようと試みてください。すると、「コンフリクトが発生していて自動的にマージすることができない」と表示されます。
 
 ```bash
-$ git merge fix-search-b
+$ git merge main
 Auto-merging search.cpp
 CONFLICT (content): Merge conflict in search.cpp
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1246,8 +1241,8 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 ```bash
 $ git status
-On branch main
-Your branch is up to date with 'origin/main'.
+On branch fix-search-b
+Your branch is up to date with 'origin/fix-search-b'.
 
 You have unmerged paths.
   (fix conflicts and run "git commit")
@@ -1268,13 +1263,159 @@ no changes added to commit (use "git add" and/or "git commit -a")
 > 
 > 本教材では発生しませんが、状況によっては`both added`と表示される場合などがあります。
 
-この表示からコンフリクトが発生しているファイルが`search.cpp`であることがわかるので、実際に開いて確認してみましょう。
+この表示からコンフリクトが発生しているファイルが**search.cpp**であることがわかるので、実際に開いて確認してみましょう。
 
+すると、コンフリクトしている箇所が下図のように示されます。*HEAD*と示されている部分は現在の`main`ブランチ、下の囲まれている部分が`fix-search-b`ブランチでBさんが施した変更です。
 
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/conflict-code.png" alt="コンフリクトコード" title="コンフリクトコード" style="border: solid 1px gray;">
+
+上図のソースコードを、下図のように編集してください(コンフリクトを解消してください)。具体的には、`<<<<<<<`と`>>>>>>>`で囲まれた範囲を編集します。また、赤く囲んだ部分の変更(`return false;`)も忘れないでください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/conflict-resolution-code.png" alt="コンフリクト解消" title="コンフリクト解消" style="border: solid 1px gray;">
+
+コンフリクト解消のために加えた変更でプログラムの正当性が損なわれていないか、動作確認をしてください。
+
+```bash
+$ make
+```
+
+コンフリクトを解消したファイルをステージングしましょう。この操作で、コンフリクトを解消したことがGitに知らされます。
+
+```bash
+$ git add search.cpp
+```
+
+状態を確認してみましょう。
+
+```bash
+$ git status
+On branch fix-search-b
+Your branch is up to date with 'origin/fix-search-b'.
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+```
+
+コンフリクトが解消されたという表示がなされています。コミットおよびプッシュしてください。
+
+```bash
+$ git commit -m "<コミットメッセージ>"
+$ git push
+```
+
+ここまでで、ローカルリポジトリの`fix-search-b`ブランチでコンフリクトを解消し、リモートリポジトリの`fix-search-b`ブランチにプッシュできました。
+
+プルリクエストのWebページをリロードすると、「This branch has conflicts that must be resolved.」という表示から「This branch has no conflicts with the base branch」という表示へ変化します。これで、コンフリクトを解消し、`main`ブランチへマージする準備が整いました。
 
 #### 2. Webページ上で解消
 
+「This branch has conflicts that must be resolved.」という表示の横にある「Resolve conflicts」ボタンをクリックします。すると、コンフリクトが発生しているファイルをWebページ上で編集することができます。上の*fix-search-b*で囲まれた範囲は`fix-search-b`ブランチでの変更、下の部分は競合している`main`ブランチの箇所です。
 
+> note
+> 
+> 画像ではベースブランチが`master`と表示されていますが、`main`と読み替えてください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/fix-conflict-on-webpage.png" alt="コンフリクトコード" title="コンフリクトコード" style="border: solid 1px gray;">
+
+コンフリクトを解消するため、以下のコードになるように`<<<<<<<`と`>>>>>>>`で囲まれた範囲、および`return文`を編集しましょう。
+
+```c++
+bool search(std::vector<int> data, int target)
+{
+	int left = 0, right = data.size(), mid;
+
+	while (left < right)
+	{
+		mid = (left + right) / 2;
+		if (data[mid] == target)
+			return true;
+		else if (target < data[mid])
+			right = mid;
+		else if (data[mid] < target)
+			left = mid + 1;
+	}
+
+	return false;
+}
+```
+
+編集後は下図のようになっているかと思います。その後、右上の「Mark as resoved」をクリックしてください。
+
+<img src="https://github.com/Lium1126/github-practice-images/blob/main/fix-conflict-on-webpage2.png" alt="コンフリクト解消" title="コンフリクト解消" style="border: solid 1px gray;">
+
+最後に、「Commit changes」をクリックしてください。プルリクエストの画面で「This branch has no conflicts with the base branch」という表記があればコンフリクト解消の成功です。
+
+> note
+> 
+> Web上でコンフリクトを解消する方法は[CLI+エディタ](#1-cliエディタ)より単純でわかりやすいですが、以下のような不都合があります。
+> 
+> - コンフリクト解消後の動作確認はどちらにせよローカルリポジトリに行った変更をプルしなければなりません
+> - 正しく編集されなかった場合に、間違ったコードのまま「Mark as resoved」されたプルリクエストが残ってしまいます
+
+### [Aさん]レビュー
+
+コンフリクトが解消されたプルリクエストのレビューをしてください。
+
+```bash
+$ git fetch
+$ git branch fix-search-b origin/fix-search-b
+$ git branch
+  fix-search-b
+* main
+$ git checkout fix-search-b
+$ make
+Before sort
+---------------------------------------------------------------
+29 48 70 34 92 64 26 100 15 20 82 24 79 99 87 38 14 45 94 8
+
+After sort
+---------------------------------------------------------------
+8 14 15 20 24 26 29 34 38 45 48 64 70 79 82 87 92 94 99 100
+
+Search for 38
+---------------------------------------------------------------
+38 is found!
+
+Search for 75
+---------------------------------------------------------------
+75 is not found!
+```
+
+動作確認後、**search.cpp**の`search`関数が、下に示すコードのようになっているかも確認してください。
+
+```c++
+bool search(std::vector<int> data, int target)
+{
+	int left = 0, right = data.size(), mid;
+
+	while (left < right)
+	{
+		mid = (left + right) / 2;
+		if (data[mid] == target)
+			return true;
+		else if (target < data[mid])
+			right = mid;
+		else if (data[mid] < target)
+			left = mid + 1;
+	}
+
+	return false;
+}
+```
+
+どちらも正しいと確認できたら、プルリクエストに承認コメントを送りましょう。
+
+### [Bさん]マージ
+
+Aさんから承認されたら、プルリクエストをマージしてください。
+
+---
+
+以上で、ハンズオンでのGitHub Flowの練習は終了です。
+
+> topic
+> 
+> 動作確認の中で生成されたバイナリファイルが邪魔だと思う方は、`make clean`を実行してください。
 
 ## 6. 最後に
 
