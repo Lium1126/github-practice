@@ -1220,6 +1220,56 @@ $ git push --set-upstream origin fix-search-b
 
 #### 1. CLI+エディタ
 
+`main`ブランチに移動します。
+
+```bash
+$ git checkout main
+```
+
+リモートリポジトリの`main`ブランチから、ローカルリポジトリの`main`ブランチに対してプルを行います。
+
+```bash
+$ git pull origin main
+```
+
+以下のコマンドで、最新版(Aさんが施した**番兵**への変更が反映された状態)を作業用ブランチへマージしようと試みてください。
+すると、「コンフリクトが発生していて自動的にマージすることができない」と表示されるかと思います。
+
+```bash
+$ git merge fix-search-b
+Auto-merging search.cpp
+CONFLICT (content): Merge conflict in search.cpp
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+現在の状態を確認してみましょう。
+
+```bash
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   search.cpp
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+「コンフリクトを解消してコミットし直してください」という旨が表示されています。
+
+上記の表示で、`both modified`と表示されているファイルが、コンフリクトが発生しているファイルです。
+
+> topic
+> 
+> 本教材では発生しませんが、状況によっては`both added`と表示される場合などがあります。
+
+この表示からコンフリクトが発生しているファイルが`search.cpp`であることがわかるので、実際に開いて確認してみましょう。
+
 
 
 #### 2. Webページ上で解消
